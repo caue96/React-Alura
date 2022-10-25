@@ -5,13 +5,6 @@ import "./formulary.css"
 import { useState } from 'react';
 
 const Formulary = (props) => {
-    const teams = [
-        "A",
-        "B",
-        "C",
-        "D"
-    ]
-
     const [name, setName] = useState('')
     const [position, setPosition] = useState('')
     const [image, setImage] = useState('')
@@ -25,6 +18,10 @@ const Formulary = (props) => {
             image,
             team
         })
+        setName('')
+        setPosition('')
+        setImage('')
+        setTeam('')
     }
 
     return (
@@ -34,7 +31,7 @@ const Formulary = (props) => {
                 <TextField mandatory={true} label="Nome" placeholder="Digite seu nome ..." value={name} onChange={value => setName(value)} />
                 <TextField mandatory={true} label="Cargo" placeholder="Digite seu cargo ..." value={position} onChange={value => setPosition(value)} />
                 <TextField label="Imagem" placeholder="Digite o endereço da imagem ..." value={image} onChange={value => setImage(value)} />
-                <DropDown mandatory={true} label ="Time" items={teams} value={team} onChange={value => setTeam(value)} />
+                <DropDown mandatory={true} label ="Time" items={props.teams} value={team} onChange={value => setTeam(value)} />
                 <Button>Criar Card</Button>
             </form>
         </section>
