@@ -1,12 +1,19 @@
+import { useState } from 'react';
 import Banner from './components/banner';
 import Formulary from './components/formulary';
-import TextField from './components/textField';
 
 function App() {
+  const [collaborators, setCollaborators] = useState([])
+
+  const atNewCollaboratorAdded = (collaborator) => {
+    console.log(collaborator)
+    setCollaborators([...collaborators, collaborator])
+  }
+
   return (
     <div className="App">
       <Banner />
-      <Formulary />
+      <Formulary atCollaboratorRegistry={atNewCollaboratorAdded} />
     </div>
   );
 }
